@@ -1,0 +1,9 @@
+<label class="pass-label">Supports only combination of
+  <span [class.-invalid]="inputChecker.invalid">digits/letters/symbols</span>
+</label>
+<input class="pass-input"
+       [formControl]="inputChecker"
+       type="text"
+       placeholder="Enter your password here"
+>
+<app-password-indicator [formData]="inputChecker"></app-password-indicator>

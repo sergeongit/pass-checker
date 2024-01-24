@@ -1,25 +1,4 @@
 <h1 class="pass-title">Password strength</h1>
 <div class="pass-input-wrapper">
-  <label>Supports only combination of
-    <span [class.-invalid]="inputChecker.invalid">digits/letters/symbols</span>
-  </label>
-  <input class="pass-input"
-         #passInput
-         [formControl]="inputChecker"
-         type="text"
-         placeholder="Enter your password here"
-  >
-  <ng-container *ngIf="inputChecker">
-    <div class="pass-marker"
-         [class.-easy]="inputChecker.value?.match(regExp.easy)"
-         [class.-medium]="inputChecker.value?.match(regExp.medium)"
-         [class.-strong]="inputChecker.value?.match(regExp.strong)"
-         [class.-invalid]="inputChecker.invalid"
-         [class.-empty]="!inputChecker.value"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </ng-container>
+  <app-form-input-area></app-form-input-area>
 </div>
