@@ -1,10 +1,8 @@
 import {
   Component,
-  inject,
   Input,
 } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { PasswordDifficultyService } from '../../services/password-difficulty.service'
 
 @Component({
   selector: 'app-password-indicator',
@@ -15,6 +13,7 @@ import { PasswordDifficultyService } from '../../services/password-difficulty.se
 })
 export class PasswordIndicatorComponent {
   @Input() formData!: FormControl
-
-  passwordCheck = inject(PasswordDifficultyService)
+  @Input() isPasswordEasy!: boolean
+  @Input() isPasswordMedium!: boolean
+  @Input() isPasswordStrong!: boolean
 }

@@ -6,4 +6,9 @@
        type="text"
        placeholder="Enter your password here"
 >
-<app-password-indicator [formData]="inputChecker"></app-password-indicator>
+<app-password-indicator
+  [formData]="inputChecker"
+  [isPasswordEasy]="isEasyValidationPassed()"
+  [isPasswordMedium]="isMediumValidationPassed()"
+  [isPasswordStrong]="isStrongValidationPassed()"
+></app-password-indicator>
