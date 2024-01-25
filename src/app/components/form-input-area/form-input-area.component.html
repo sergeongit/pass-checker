@@ -8,7 +8,7 @@
 >
 <app-password-indicator
   [formData]="inputChecker"
-  [isPasswordEasy]="isEasyValidationPassed()"
-  [isPasswordMedium]="isMediumValidationPassed()"
-  [isPasswordStrong]="isStrongValidationPassed()"
+  [isPasswordEasy]="passwordCheck.isEasyValidationPassed(inputChecker)"
+  [isPasswordMedium]="passwordCheck.isMediumValidationPassed(inputChecker)"
+  [isPasswordStrong]="passwordCheck.isStrongValidationPassed(inputChecker)"
 ></app-password-indicator>

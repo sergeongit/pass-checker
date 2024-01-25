@@ -1,6 +1,7 @@
 import {
   Component,
   forwardRef,
+  inject,
 } from '@angular/core'
 import {
   ControlValueAccessor,
@@ -11,6 +12,7 @@ import {
   Validators,
 } from '@angular/forms'
 import { PasswordIndicatorComponent } from '../password-indicator/password-indicator.component'
+import { PasswordStrengthService } from '../../../services/password-strength.service'
 
 @Component({
   selector: 'app-form-input-area',
@@ -27,6 +29,8 @@ import { PasswordIndicatorComponent } from '../password-indicator/password-indic
   ]
 })
 export class FormInputAreaComponent implements ControlValueAccessor {
+  passwordCheck = inject(PasswordStrengthService)
+
   inputChecker = new FormControl('', [
     Validators.required,
     Validators.pattern('^[a-zA-Z\\d!@#$%^&*()_+{}\\[\\]:;<>,.?~\\\\-]+$'),
@@ -36,20 +40,4 @@ export class FormInputAreaComponent implements ControlValueAccessor {
   writeValue(value: any): void {}
   registerOnChange(fn: any): void {}
   registerOnTouched(fn: any): void {}
-
-  // CUSTOM validators
-  isEasyValidationPassed(): boolean {
-    const value = this.inputChecker?.value || ''
-    return /^([a-zA-Z]+|[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]+|[0-9]+)$/.test(value)
-  }
-
-  isMediumValidationPassed(): boolean {
-    const value = this.inputChecker?.value || ''
-    return /^(?:(?=.*[a-zA-Z])(?=.*\d)|(?=.*[a-zA-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-])|(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]))[a-zA-Z\d!@#$%^&*()_+{}\[\]:;<>,.?~\\-]+$/.test(value)
-  }
-
-  isStrongValidationPassed(): boolean {
-    const value = this.inputChecker?.value || ''
-    return /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).+$/.test(value)
-  }
 }
